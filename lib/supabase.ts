@@ -3,6 +3,12 @@ import { createClient } from '@supabase/supabase-js';
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || '';
 const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || '';
 
+// Determine the proper redirect URL based on environment
+const isDevelopment = process.env.NODE_ENV === 'development';
+const siteUrl = isDevelopment 
+  ? 'http://localhost:3000' 
+  : 'https://www.designer.onlycodez.com';
+
 export const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
 export type CustomizableElement = {
